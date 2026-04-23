@@ -1,20 +1,33 @@
 package com.uneat.models;
 
 public class Stock {
-    private String nomRepas;
+
+    private String nom;
     private int quantite;
     private double prix;
 
-    // constructeur
-    public Stock(String nomRepas, int quantite, double prix) {
-        this.nomRepas = nomRepas;
+    public Stock(String nom, int quantite, double prix) {
+        this.nom = nom;
         this.quantite = quantite;
         this.prix = prix;
     }
 
-    // getters
-    public String getNomRepas() {
-        return nomRepas;
+    public void diminuerStock(int qte) {
+        if (qte <= quantite) {
+            quantite -= qte;
+        } else {
+            System.out.println("❌ Stock insuffisant pour " + nom);
+        }
+    }
+
+    public void verifierStock() {
+        if (quantite <= 2) {
+            System.out.println("⚠️ Stock faible pour " + nom);
+        }
+    }
+
+    public void afficher() {
+        System.out.println(nom + " | Stock: " + quantite + " | Prix: " + prix + " DT");
     }
 
     public int getQuantite() {
@@ -25,11 +38,7 @@ public class Stock {
         return prix;
     }
 
-    // affichage
-    public void afficherStock() {
-        System.out.println("Repas: " + nomRepas);
-        System.out.println("Quantité: " + quantite);
-        System.out.println("Prix: " + prix + " DT");
-        System.out.println("----------------------");
+    public String getNom() {
+        return nom;
     }
 }
